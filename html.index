@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brazil vs Norway - 23 Tickets</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="header">
+
+        <h1>🇧🇷 Brazil VS Norway 🇳🇴</h1>
+
+        <div class="matchDetails">
+
+            <div class="detail">
+                <strong>📅 Date</strong><br>
+                6 July
+            </div>
+
+            <div class="detail">
+                <strong>🕐 Time</strong><br>
+                1:30 AM
+            </div>
+
+            <div class="detail">
+                <strong>🎟 Tickets</strong><br>
+                23
+            </div>
+
+        </div>
+
+    </header>
+
+    <section class="unlockSection">
+
+        <h2>Unlock All Tickets</h2>
+
+        <p>
+            Enter the secret code to reveal every Brazil and Norway player.
+        </p>
+
+        <div class="unlockBox">
+
+            <input
+                type="password"
+                id="unlockCode"
+                placeholder="Enter Code">
+
+            <button id="unlockBtn">
+                Unlock
+            </button>
+
+        </div>
+
+        <p id="status"></p>
+
+    </section>
+
+    <section id="ticketContainer" class="ticketGrid">
+
+        <!-- JavaScript will create all 23 tickets here -->
+
+    </section>
+
+</div>
+
+<script src="players.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
