@@ -1,141 +1,75 @@
-const tickets = [
+const SECRET_CODE = "VINILAAND";
 
-{
-ticket:1,
-brazil:{name:"Igor Thiago",number:25},
-norway:{name:"Henrik Falchener",number:23}
-},
+const container = document.getElementById("ticketContainer");
+const unlockBtn = document.getElementById("unlockBtn");
+const input = document.getElementById("unlockCode");
+const status = document.getElementById("status");
 
-{
-ticket:2,
-brazil:{name:"Roger Ibañez",number:24},
-norway:{name:"Sondre Langås",number:24}
-},
+function loadTickets() {
 
-{
-ticket:3,
-brazil:{name:"Danilo",number:13},
-norway:{name:"David Møller Wolfe",number:5}
-},
+    container.innerHTML = "";
 
-{
-ticket:4,
-brazil:{name:"Douglas Santos",number:16},
-norway:{name:"Marcus Holmgren Pedersen",number:16}
-},
+    tickets.forEach((ticket) => {
 
-{
-ticket:5,
-brazil:{name:"Fabinho",number:17},
-norway:{name:"Fredrik André Bjørkan",number:15}
-},
+        container.innerHTML += `
+        <div class="ticket">
 
-{
-ticket:6,
-brazil:{name:"Alex Sandro",number:6},
-norway:{name:"Kristoffer Ajer",number:3}
-},
+            <div class="ticketHeader">
+                Ticket #${ticket.ticket}
+            </div>
 
-{
-ticket:7,
-brazil:{name:"Leo Pereira",number:15},
-norway:{name:"Patrick Berg",number:6}
-},
+            <div class="locked">
+                <h2>🔒</h2>
+                <p>Enter VINILAAND to reveal players</p>
+            </div>
 
-{
-ticket:8,
-brazil:{name:"Ederson Silva",number:2},
-norway:{name:"Morten Thorsby",number:2}
-},
+            <div class="ticketContent">
 
-{
-ticket:9,
-brazil:{name:"Lucas Paquetá",number:20},
-norway:{name:"Andreas Schjelderup",number:21}
-},
+                <div class="player">
+                    <h2>🇧🇷 Brazil</h2>
+                    <h3>${ticket.brazil.name}</h3>
+                    <p>Jersey No. ${ticket.brazil.number}</p>
+                </div>
 
-{
-ticket:10,
-brazil:{name:"Bruno Guimarães",number:8},
-norway:{name:"Fredrik Aursnes",number:14}
-},
+                <div class="vs">VS</div>
 
-{
-ticket:11,
-brazil:{name:"Danilo Santos",number:18},
-norway:{name:"Sander Berge",number:8}
-},
+                <div class="player">
+                    <h2>🇳🇴 Norway</h2>
+                    <h3>${ticket.norway.name}</h3>
+                    <p>Jersey No. ${ticket.norway.number}</p>
+                </div>
 
-{
-ticket:12,
-brazil:{name:"Oscar Bobb",number:22},
-norway:{name:"Oscar Bobb",number:22}
-},
+            </div>
 
-{
-ticket:13,
-brazil:{name:"Casemiro",number:5},
-norway:{name:"Martin Ødegaard",number:10}
-},
+        </div>
+        `;
 
-{
-ticket:14,
-brazil:{name:"Rayan",number:26},
-norway:{name:"Thelo Aasgaard",number:19}
-},
+    });
 
-{
-ticket:15,
-brazil:{name:"Matheus Cunha",number:9},
-norway:{name:"Antonio Nusa",number:20}
-},
-
-{
-ticket:16,
-brazil:{name:"Luiz Henrique",number:21},
-norway:{name:"Jens Petter Hauge",number:23}
-},
-
-{
-ticket:17,
-brazil:{name:"Endrick",number:19},
-norway:{name:"Torbjørn Heggem",number:17}
-},
-
-{
-ticket:18,
-brazil:{name:"Gabriel Martinelli",number:22},
-norway:{name:"Julian Ryerson",number:26}
-},
-
-{
-ticket:19,
-brazil:{name:"Gabriel Magalhães",number:3},
-norway:{name:"Alexander Sørloth",number:7}
-},
-
-{
-ticket:20,
-brazil:{name:"Bremer",number:14},
-norway:{name:"Jørgen Strand Larsen",number:11}
-},
-
-{
-ticket:21,
-brazil:{name:"Raphinha",number:11},
-norway:{name:"Erling Haaland",number:9}
-},
-
-{
-ticket:22,
-brazil:{name:"Vinícius Júnior",number:7},
-norway:{name:"Oscar Bobb",number:22}
-},
-
-{
-ticket:23,
-brazil:{name:"Neymar Jr.",number:10},
-norway:{name:"Martin Ødegaard",number:10}
 }
 
-];
+loadTickets();
+
+unlockBtn.addEventListener("click", function () {
+
+    if (input.value.trim().toUpperCase() === SECRET_CODE) {
+
+        document.querySelectorAll(".locked").forEach(card => {
+            card.style.display = "none";
+        });
+
+        document.querySelectorAll(".ticketContent").forEach(card => {
+            card.style.display = "block";
+        });
+
+        status.innerHTML = "✅ All 23 tickets unlocked!";
+        status.style.color = "lime";
+
+    } else {
+
+        status.innerHTML = "❌ Incorrect Code";
+        status.style.color = "red";
+
+    }
+
+});
